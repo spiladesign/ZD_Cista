@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projekty — ZD Čistá u Mladé Boleslavi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Inter', sans-serif; background: #FAF7F2; color: #2A2A2A; -webkit-font-smoothing: antialiased; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="shared.js"></script>
+<script type="text/babel">
+
+const EULogo = ({ label, color = '#1a4fa0' }) => (
+  <div style={{
+    background: 'white', border: '1px solid #e8e8e8', borderRadius: 8,
+    padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 8,
+    fontSize: 12, fontWeight: 600, color,
+  }}>
+    <IcoEU /> {label}
+  </div>
+);
+
+const Projekty = () => (
+  <>
+    <ZDHeader activePage="projekty.html" variant="light" />
+    <ZDPageHero
+      title="Projekty"
+      subtitle="Přehled probíhajících a dokončených projektů ZD Čistá, včetně spolufinancování z fondů EU."
+    />
+
+    {/* EU PROJEKT — hlavní */}
+    <section style={{ padding: '80px 24px', background: '#FAF7F2' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        <ZDSectionHead eyebrow="EU projekt" title="Rekonstrukce administrativní budovy" />
+
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 56, alignItems: 'start' }} className="resp-2col">
+          <div>
+            {/* Status badge */}
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: '#fff3e0', border: '1px solid #f0a030', borderRadius: 20, padding: '6px 14px', marginBottom: 24, fontSize: 12, fontWeight: 700, color: '#c07010' }}>
+              <div style={{ width: 7, height: 7, borderRadius: '50%', background: '#e0901a' }} />
+              Projekt probíhá
+            </div>
+
+            <div style={{ background: '#e8f4e0', borderRadius: 12, padding: '16px 20px', marginBottom: 24, fontSize: 14, lineHeight: 1.65, color: '#2a4a1a', fontWeight: 500 }}>
+              REKONSTRUKCE, SNÍŽENÍ ENERGETICKÉ NÁROČNOSTI ADMINISTRATIVNÍ BUDOVY Č. 173 ZD ČISTÁ je spolufinancován Evropskou unií.
+            </div>
+
+            <p style={{ fontSize: 16, lineHeight: 1.8, color: '#555', marginBottom: 20 }}>
+              Cílem projektu je <strong>snížení energetické náročnosti a provozních výdajů</strong> administrativní budovy ZD Čistá. V rámci stavebních opatření bude provedeno:
+            </p>
+
+            <ul style={{ paddingLeft: 20, marginBottom: 24 }}>
+              {[
+                'Zateplení objektu (stěny, sokly, střechy)',
+                'Výměna stávajících výplní otvorů (okna, dveře)',
+                'Výměna zdroje tepla',
+                'Rekonstrukce otopné soustavy',
+              ].map((item, i) => (
+                <li key={i} style={{ fontSize: 15, color: '#555', lineHeight: 1.75, marginBottom: 8, display: 'flex', gap: 10, listStyle: 'none', alignItems: 'flex-start' }}>
+                  <span style={{ color: ZD_COLORS.green, flexShrink: 0, marginTop: 3 }}><IcoCheck /></span> {item}
+                </li>
+              ))}
+            </ul>
+
+            {/* EU Loga */}
+            <div style={{ borderTop: '1px solid #e8e0d4', paddingTop: 24 }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: '#aaa', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: 14 }}>Spolufinancováno z</div>
+              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                <EULogo label="Evropská unie" color="#003399" />
+                <EULogo label="Evropský fond pro regionální rozvoj" color="#003399" />
+                <EULogo label="OP Podnikání a inovace pro konkurenceschopnost" color="#1a4fa0" />
+                <EULogo label="Ministerstvo průmyslu a obchodu ČR" color="#c00020" />
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <ZDImg label={"fotografie:\nrekonstrukce administrativní\nbudovy č. 173 v Čisté"} style={{ height: 340, borderRadius: 16, background: 'linear-gradient(135deg, #8090b0 0%, #4a5a80 100%)', marginBottom: 20 }} />
+
+            {/* Klíčové info */}
+            <div style={{ background: 'white', borderRadius: 14, padding: '20px 22px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+              <div style={{ fontSize: 12, fontWeight: 700, color: '#aaa', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: 14 }}>Informace o projektu</div>
+              {[
+                ['Program', 'OP Podnikání a inovace pro konkurenceschopnost'],
+                ['Fond', 'Evropský fond pro regionální rozvoj (EFRR)'],
+                ['Zaměření', 'Snížení energetické náročnosti'],
+                ['Příjemce', 'ZD Čistá u Mladé Boleslavi'],
+              ].map(([k, v]) => (
+                <div key={k} style={{ display: 'flex', gap: 12, paddingBottom: 10, marginBottom: 10, borderBottom: '1px solid #f5f1ec', fontSize: 13 }}>
+                  <span style={{ color: '#aaa', width: 80, flexShrink: 0 }}>{k}</span>
+                  <span style={{ color: '#333', fontWeight: 500, lineHeight: 1.5 }}>{v}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {/* Povinná publicita */}
+    <section style={{ padding: '40px 24px', background: '#F0EBE1' }}>
+      <div style={{ maxWidth: 1200, margin: '0 auto' }}>
+        <div style={{ background: 'white', borderRadius: 14, padding: '24px 28px', border: '1px solid #e0d8ce', fontSize: 13, color: '#666', lineHeight: 1.7 }}>
+          <div style={{ fontSize: 11, fontWeight: 700, color: '#aaa', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: 10 }}>Povinná publicita EU</div>
+          Projekt <em>Rekonstrukce, snížení energetické náročnosti administrativní budovy č. 173 ZD Čistá</em> je spolufinancován Evropskou unií prostřednictvím Operačního programu Podnikání a inovace pro konkurenceschopnost (OP PIK) z Evropského fondu pro regionální rozvoj (EFRR). Za obsah odpovídá výhradně příjemce podpory — Zemědělské družstvo Čistá u Mladé Boleslavi, IČO: 00105368.
+        </div>
+      </div>
+    </section>
+
+    <ZDCtaSection title="Dotazy k projektům?" subtitle="Máte-li dotazy k realizovaným projektům, neváhejte nás kontaktovat." />
+    <ZDFooter />
+    <style>{`@media(max-width:768px){.resp-2col{grid-template-columns:1fr!important}}`}</style>
+  </>
+);
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Projekty />);
+</script>
+</body>
+</html>
